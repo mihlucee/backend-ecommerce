@@ -41,6 +41,9 @@ app.use('/api/v1/addresses', addressRoutes);
 const reviewRoutes = require('./routes/reviewRoutes');
 app.use('/api/v1/reviews', reviewRoutes);
 
+const couponRoutes = require('./routes/couponRoutes'); 
+app.use('/api/v1/coupons', couponRoutes);
+
 // app.use('/api/users', require('./routes/userRoutes'));
 
 const PORT = process.env.PORT || 5000;
