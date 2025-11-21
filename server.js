@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
 });
 
 // Rotas (Serão adicionadas na Seção 3)
+app.use('/api/users', require('./routes/userRoutes'));
+
 // app.use('/api/users', require('./routes/userRoutes'));
 
 const PORT = process.env.PORT || 5000;
