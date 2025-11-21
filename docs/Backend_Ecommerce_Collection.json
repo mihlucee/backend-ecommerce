@@ -1,0 +1,1187 @@
+{
+    "info": {
+		"_postman_id": "9a1b2c3d-4e5f-6789-0123-456789abcdef",
+		"name": "ADS28 - Backend E-commerce API",
+		"description": "API REST completa para um sistema de E-commerce, desenvolvida com Node.js, Express, Mongoose e MongoDB Atlas. Contém 10 CRUDs completos e validações com Yup.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"variable": [
+			{
+				"key": "baseUrl",
+				"value": "http://localhost:5000/api/v1",
+				"type": "string"
+			}
+		]
+	},
+	"item": [
+		{
+			"name": "01. Usuários (User)",
+			"description": "Gerenciamento de usuários internos do sistema (administradores, funcionários).",
+			"item": [
+				{
+					"name": "POST /users - Criar Usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Admin Teste\",\n    \"email\": \"admin@ecommerce.com\",\n    \"senha\": \"senha123\",\n    \"role\": \"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Cria um novo usuário no sistema. Requer nome, email (único) e senha (mínimo 6 caracteres)."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /users - Listar Usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Retorna a lista de todos os usuários cadastrados."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /users/:id - Obter Usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						},
+						"description": "Retorna um usuário específico pelo ID. **Substitua {{user_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /users/:id - Atualizar Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Admin Atualizado\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um usuário específico. **Substitua {{user_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /users/:id - Deletar Usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/{{user_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"{{user_id}}"
+							]
+						},
+						"description": "Deleta um usuário específico. **Substitua {{user_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "02. Clientes (Customer)",
+			"description": "Gerenciamento de clientes que realizam pedidos. Relacionamento 1:N com Endereço e 1:N com Pedido.",
+			"item": [
+				{
+					"name": "POST /customers - Criar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"João da Silva\",\n    \"email\": \"joao@cliente.com\",\n    \"telefone\": \"(11) 98765-4321\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Cria um novo cliente. Requer nome, email (único) e telefone."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /customers - Listar Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers"
+							]
+						},
+						"description": "Retorna a lista de todos os clientes cadastrados, populando seus endereços."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /customers/:id - Obter Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customer_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						},
+						"description": "Retorna um cliente específico pelo ID. **Substitua {{customer_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /customers/:id - Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"telefone\": \"(11) 99999-8888\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customer_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um cliente específico. **Substitua {{customer_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /customers/:id - Deletar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/customers/{{customer_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						},
+						"description": "Deleta um cliente específico. **Substitua {{customer_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "03. Categorias (Category)",
+			"description": "Gerenciamento de categorias de produtos. Relacionamento 1:N com Produto.",
+			"item": [
+				{
+					"name": "POST /categories - Criar Categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Eletrônicos\",\n    \"descricao\": \"Produtos eletrônicos em geral\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						},
+						"description": "Cria uma nova categoria. Requer nome (único)."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /categories - Listar Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						},
+						"description": "Retorna a lista de todas as categorias."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /categories/:id - Obter Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/{{category_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"{{category_id}}"
+							]
+						},
+						"description": "Retorna uma categoria específica pelo ID. **Substitua {{category_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /categories/:id - Atualizar Categoria",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"descricao\": \"Produtos de alta tecnologia\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories/{{category_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"{{category_id}}"
+							]
+						},
+						"description": "Atualiza os dados de uma categoria específica. **Substitua {{category_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /categories/:id - Deletar Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/{{category_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"{{category_id}}"
+							]
+						},
+						"description": "Deleta uma categoria específica. **Substitua {{category_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "04. Fornecedores (Supplier)",
+			"description": "Gerenciamento de fornecedores. Relacionamento 1:N com Produto.",
+			"item": [
+				{
+					"name": "POST /suppliers - Criar Fornecedor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Tech Distribuidora\",\n    \"cnpj\": \"12.345.678/0001-90\",\n    \"email\": \"contato@tech.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/suppliers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						},
+						"description": "Cria um novo fornecedor. Requer nome e CNPJ (único)."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /suppliers - Listar Fornecedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers"
+							]
+						},
+						"description": "Retorna a lista de todos os fornecedores."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /suppliers/:id - Obter Fornecedor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/{{supplier_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"{{supplier_id}}"
+							]
+						},
+						"description": "Retorna um fornecedor específico pelo ID. **Substitua {{supplier_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /suppliers/:id - Atualizar Fornecedor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"telefone\": \"(11) 3333-4444\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/{{supplier_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"{{supplier_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um fornecedor específico. **Substitua {{supplier_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /suppliers/:id - Deletar Fornecedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/suppliers/{{supplier_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"suppliers",
+								"{{supplier_id}}"
+							]
+						},
+						"description": "Deleta um fornecedor específico. **Substitua {{supplier_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "05. Produtos (Product)",
+			"description": "Gerenciamento de produtos. Relacionamento N:1 com Categoria, Fornecedor e Usuário.",
+			"item": [
+				{
+					"name": "POST /products - Criar Produto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Smartphone X\",\n    \"descricao\": \"Celular de última geração com câmera 48MP.\",\n    \"preco\": 1500.50,\n    \"estoque\": 50,\n    \"categoria\": \"{{category_id}}\",\n    \"fornecedor\": \"{{supplier_id}}\",\n    \"cadastradoPor\": \"{{user_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Cria um novo produto. Requer IDs válidos de Categoria, Fornecedor e Usuário. **Substitua {{category_id}}, {{supplier_id}} e {{user_id}} pelos IDs reais.**"
+					},
+					"response": []
+				},
+				{
+					"name": "GET /products - Listar Produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Retorna a lista de todos os produtos, populando Categoria, Fornecedor e Usuário."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /products/:id - Obter Produto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/{{product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Retorna um produto específico pelo ID. **Substitua {{product_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /products/:id - Atualizar Produto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"preco\": 1450.00,\n    \"estoque\": 45\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/{{product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um produto específico. **Substitua {{product_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /products/:id - Deletar Produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/{{product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"{{product_id}}"
+							]
+						},
+						"description": "Deleta um produto específico. **Substitua {{product_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "06. Endereços (Address)",
+			"description": "Gerenciamento de endereços. Relacionamento N:1 com Cliente.",
+			"item": [
+				{
+					"name": "POST /addresses - Criar Endereço",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rua\": \"Rua das Flores\",\n    \"numero\": \"100\",\n    \"bairro\": \"Centro\",\n    \"cidade\": \"São Paulo\",\n    \"estado\": \"SP\",\n    \"cep\": \"01000-000\",\n    \"cliente\": \"{{customer_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addresses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses"
+							]
+						},
+						"description": "Cria um novo endereço. Requer ID válido de Cliente. **Substitua {{customer_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "GET /addresses - Listar Endereços",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/addresses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses"
+							]
+						},
+						"description": "Retorna a lista de todos os endereços, populando o Cliente."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /addresses/:id - Obter Endereço",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/addresses/{{address_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses",
+								"{{address_id}}"
+							]
+						},
+						"description": "Retorna um endereço específico pelo ID. **Substitua {{address_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /addresses/:id - Atualizar Endereço",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": \"100-A\",\n    \"complemento\": \"Apto 10\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addresses/{{address_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses",
+								"{{address_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um endereço específico. **Substitua {{address_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /addresses/:id - Deletar Endereço",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/addresses/{{address_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addresses",
+								"{{address_id}}"
+							]
+						},
+						"description": "Deleta um endereço específico. **Substitua {{address_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "07. Avaliações (Review)",
+			"description": "Gerenciamento de avaliações de produtos. Relacionamento N:1 com Produto e Cliente.",
+			"item": [
+				{
+					"name": "POST /reviews - Criar Avaliação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Produto Excelente!\",\n    \"texto\": \"Chegou rápido e a qualidade é superior ao esperado.\",\n    \"rating\": 5,\n    \"produto\": \"{{product_id}}\",\n    \"cliente\": \"{{customer_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews"
+							]
+						},
+						"description": "Cria uma nova avaliação. Requer IDs válidos de Produto e Cliente. **Substitua {{product_id}} e {{customer_id}} pelos IDs reais.**"
+					},
+					"response": []
+				},
+				{
+					"name": "GET /reviews - Listar Avaliações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews"
+							]
+						},
+						"description": "Retorna a lista de todas as avaliações, populando Produto e Cliente."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /reviews/:id - Obter Avaliação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/{{review_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "Retorna uma avaliação específica pelo ID. **Substitua {{review_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /reviews/:id - Atualizar Avaliação",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 4,\n    \"texto\": \"Muito bom, mas a entrega atrasou um pouco.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reviews/{{review_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "Atualiza os dados de uma avaliação específica. **Substitua {{review_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /reviews/:id - Deletar Avaliação",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/{{review_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"{{review_id}}"
+							]
+						},
+						"description": "Deleta uma avaliação específica. **Substitua {{review_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "08. Cupons (Coupon)",
+			"description": "Gerenciamento de cupons de desconto. Relacionamento 1:N com Pedido.",
+			"item": [
+				{
+					"name": "POST /coupons - Criar Cupom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo\": \"PRIMEIRACOMPRA20\",\n    \"desconto\": 20,\n    \"tipoDesconto\": \"porcentagem\",\n    \"dataExpiracao\": \"2026-12-31\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/coupons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coupons"
+							]
+						},
+						"description": "Cria um novo cupom. Requer código (único), valor de desconto e data de expiração futura."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /coupons - Listar Cupons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coupons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coupons"
+							]
+						},
+						"description": "Retorna a lista de todos os cupons."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /coupons/:id - Obter Cupom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coupons/{{coupon_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coupons",
+								"{{coupon_id}}"
+							]
+						},
+						"description": "Retorna um cupom específico pelo ID. **Substitua {{coupon_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /coupons/:id - Atualizar Cupom",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ativo\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/coupons/{{coupon_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coupons",
+								"{{coupon_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um cupom específico. **Substitua {{coupon_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /coupons/:id - Deletar Cupom",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coupons/{{coupon_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coupons",
+								"{{coupon_id}}"
+							]
+						},
+						"description": "Deleta um cupom específico. **Substitua {{coupon_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "09. Itens de Pedido (OrderItem)",
+			"description": "Detalhes dos produtos em um pedido. Relacionamento N:1 com Pedido e Produto.",
+			"item": [
+				{
+					"name": "POST /orderitems - Criar Item de Pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pedido\": \"{{order_id}}\",\n    \"produto\": \"{{product_id}}\",\n    \"quantidade\": 2,\n    \"precoUnitario\": 1500.50\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orderitems",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderitems"
+							]
+						},
+						"description": "Cria um novo item de pedido. Requer IDs válidos de Pedido e Produto. **Substitua {{order_id}} e {{product_id}} pelos IDs reais.**"
+					},
+					"response": []
+				},
+				{
+					"name": "GET /orderitems - Listar Itens de Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orderitems",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderitems"
+							]
+						},
+						"description": "Retorna a lista de todos os itens de pedido, populando Pedido e Produto."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /orderitems/:id - Obter Item de Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orderitems/{{orderitem_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderitems",
+								"{{orderitem_id}}"
+							]
+						},
+						"description": "Retorna um item de pedido específico pelo ID. **Substitua {{orderitem_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /orderitems/:id - Atualizar Item de Pedido",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantidade\": 3\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orderitems/{{orderitem_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderitems",
+								"{{orderitem_id}}"
+							]
+						},
+						"description": "Atualiza os dados de um item de pedido específico. **Substitua {{orderitem_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /orderitems/:id - Deletar Item de Pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orderitems/{{orderitem_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orderitems",
+								"{{orderitem_id}}"
+							]
+						},
+						"description": "Deleta um item de pedido específico. **Substitua {{orderitem_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "10. Pedidos (Order)",
+			"description": "Gerenciamento de pedidos. Relacionamento N:1 com Cliente, 1:N com ItemPedido e N:1 com Cupom.",
+			"item": [
+				{
+					"name": "POST /orders - Criar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cliente\": \"{{customer_id}}\",\n    \"itens\": [\"{{orderitem_id_1}}\", \"{{orderitem_id_2}}\"],\n    \"total\": 3001.00,\n    \"enderecoEntrega\": \"{{address_id}}\",\n    \"cupom\": \"{{coupon_id}}\" \n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Cria um novo pedido. Requer IDs válidos de Cliente, Endereço e pelo menos um ItemPedido. **Substitua os IDs reais.**"
+					},
+					"response": []
+				},
+				{
+					"name": "GET /orders - Listar Pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						},
+						"description": "Retorna a lista de todos os pedidos, populando Cliente, Itens, Cupom e Endereço."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /orders/:id - Obter Pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{order_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Retorna um pedido específico pelo ID. **Substitua {{order_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /orders/:id - Atualizar Pedido",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"enviado\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{order_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Atualiza o status de um pedido específico. **Substitua {{order_id}} pelo ID real.**"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /orders/:id - Deletar Pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{order_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{order_id}}"
+							]
+						},
+						"description": "Deleta um pedido específico. **Substitua {{order_id}} pelo ID real.**"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
