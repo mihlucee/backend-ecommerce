@@ -35,6 +35,9 @@ app.use('/api/v1/products', productRoutes);
 const supplierRoutes = require('./routes/supplierRoutes');
 app.use('/api/v1/suppliers', supplierRoutes);
 
+const addressRoutes = require('./routes/addressRoutes'); 
+app.use('/api/v1/addresses', addressRoutes);
+
 // app.use('/api/users', require('./routes/userRoutes'));
 
 const PORT = process.env.PORT || 5000;
