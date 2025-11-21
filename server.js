@@ -26,6 +26,12 @@ app.use('/api/v1/users', userRoutes);
 const customerRoutes = require('./routes/customerRoutes');
 app.use('/api/v1/customers', customerRoutes);
 
+const categoryRoutes = require('./routes/categoryRoutes'); 
+app.use('/api/v1/categories', categoryRoutes);
+
+const productRoutes = require('./routes/productRoutes'); 
+app.use('/api/v1/products', productRoutes);
+
 // app.use('/api/users', require('./routes/userRoutes'));
 
 const PORT = process.env.PORT || 5000;
