@@ -47,6 +47,9 @@ app.use('/api/v1/coupons', couponRoutes);
 const orderItemRoutes = require('./routes/orderItemRoutes');
 app.use('/api/v1/order-items', orderItemRoutes);
 
+const orderRoutes = require('./routes/orderRoutes'); 
+app.use('/api/v1/orders', orderRoutes);
+
 // app.use('/api/users', require('./routes/userRoutes'));
 
 const PORT = process.env.PORT || 5000;
