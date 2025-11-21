@@ -20,7 +20,11 @@ app.get('/', (req, res) => {
 });
 
 // Rotas (Serão adicionadas na Seção 3)
-app.use('/api/users', require('./routes/userRoutes'));
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/v1/users', userRoutes);
+
+const customerRoutes = require('./routes/customerRoutes');
+app.use('/api/v1/customers', customerRoutes);
 
 // app.use('/api/users', require('./routes/userRoutes'));
 
