@@ -3,6 +3,8 @@ const asyncHandler = require('express-async-handler');
 
 // Função genérica para criar um novo documento
 const createOne = (Model) => asyncHandler(async (req, res) => {
+  console.log('--- EXECUTANDO createOne ---'); // Adicione esta linha
+  console.log('Corpo da Requisição:', req.body); // Adicione esta linha
   const doc = await Model.create(req.body);
   res.status(201).json(doc);
 });

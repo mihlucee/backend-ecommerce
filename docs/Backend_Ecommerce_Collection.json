@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "01. Usuário (User) - Fabrício",
+			"name": "01. Usuário (User ) - Fabrício",
 			"item": [
 				{
 					"name": "POST /users (Criar)",
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Fabrício Admin\",\n    \"email\": \"fabricio.admin@email.com\",\n    \"password\": \"senha123\",\n    "role": \"admin\"\n}",
+							"raw": "{\n    \"name\": \"Fabrício Admin\",\n    \"email\": \"fabricio.admin@email.com\",\n    \"password\": \"senha123\",\n    \"role\": \"admin\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -40,7 +40,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /users (Listar Todos)",
+					"name": "GET /users (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -61,7 +61,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /users/:id (Buscar por ID)",
+					"name": "GET /users/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -83,7 +83,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /users/:id (Atualizar)",
+					"name": "PATCH /users/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -114,7 +114,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /users/:id (Deletar)",
+					"name": "DELETE /users/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -138,7 +138,7 @@
 			]
 		},
 		{
-			"name": "02. Cliente (Customer) - Você",
+			"name": "02. Cliente (Customer ) - Você",
 			"item": [
 				{
 					"name": "POST /customers (Criar)",
@@ -171,7 +171,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /customers (Listar Todos)",
+					"name": "GET /customers (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -192,7 +192,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /customers/:id (Buscar por ID)",
+					"name": "GET /customers/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -214,7 +214,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /customers/:id (Atualizar)",
+					"name": "PATCH /customers/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -245,7 +245,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /customers/:id (Deletar)",
+					"name": "DELETE /customers/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -269,7 +269,7 @@
 			]
 		},
 		{
-			"name": "03. Categoria (Category) - Fabrício",
+			"name": "03. Categoria (Category ) - Fabrício",
 			"item": [
 				{
 					"name": "POST /categories (Criar)",
@@ -302,7 +302,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /categories (Listar Todos)",
+					"name": "GET /categories (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -323,7 +323,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /categories/:id (Buscar por ID)",
+					"name": "GET /categories/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -345,7 +345,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /categories/:id (Atualizar)",
+					"name": "PATCH /categories/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -376,7 +376,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /categories/:id (Deletar)",
+					"name": "DELETE /categories/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -400,7 +400,7 @@
 			]
 		},
 		{
-			"name": "04. Produto (Product) - Você",
+			"name": "04. Produto (Product ) - Você",
 			"item": [
 				{
 					"name": "POST /products (Criar)",
@@ -433,7 +433,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /products (Listar Todos)",
+					"name": "GET /products (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -454,7 +454,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /products/:id (Buscar por ID)",
+					"name": "GET /products/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -476,7 +476,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /products/:id (Atualizar)",
+					"name": "PATCH /products/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -507,7 +507,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /products/:id (Deletar)",
+					"name": "DELETE /products/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -531,7 +531,7 @@
 			]
 		},
 		{
-			"name": "05. Pedido (Order) - Fabrício",
+			"name": "05. Pedido (Order ) - Fabrício",
 			"item": [
 				{
 					"name": "POST /orders (Criar)",
@@ -564,7 +564,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /orders (Listar Todos)",
+					"name": "GET /orders (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -585,7 +585,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /orders/:id (Buscar por ID)",
+					"name": "GET /orders/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -607,7 +607,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /orders/:id (Atualizar)",
+					"name": "PATCH /orders/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -638,7 +638,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /orders/:id (Deletar)",
+					"name": "DELETE /orders/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -662,7 +662,7 @@
 			]
 		},
 		{
-			"name": "06. ItemPedido (OrderItem) - Você",
+			"name": "06. ItemPedido (OrderItem ) - Você",
 			"item": [
 				{
 					"name": "POST /orderitems (Criar)",
@@ -695,7 +695,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /orderitems (Listar Todos)",
+					"name": "GET /orderitems (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -716,7 +716,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /orderitems/:id (Buscar por ID)",
+					"name": "GET /orderitems/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -738,7 +738,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /orderitems/:id (Atualizar)",
+					"name": "PATCH /orderitems/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -769,7 +769,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /orderitems/:id (Deletar)",
+					"name": "DELETE /orderitems/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -793,7 +793,7 @@
 			]
 		},
 		{
-			"name": "07. Endereço (Address) - Fabrício",
+			"name": "07. Endereço (Address ) - Fabrício",
 			"item": [
 				{
 					"name": "POST /addresses (Criar)",
@@ -826,7 +826,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /addresses (Listar Todos)",
+					"name": "GET /addresses (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -847,7 +847,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /addresses/:id (Buscar por ID)",
+					"name": "GET /addresses/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -869,7 +869,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /addresses/:id (Atualizar)",
+					"name": "PATCH /addresses/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -900,7 +900,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /addresses/:id (Deletar)",
+					"name": "DELETE /addresses/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -924,7 +924,7 @@
 			]
 		},
 		{
-			"name": "08. Fornecedor (Supplier) - Você",
+			"name": "08. Fornecedor (Supplier ) - Você",
 			"item": [
 				{
 					"name": "POST /suppliers (Criar)",
@@ -957,7 +957,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /suppliers (Listar Todos)",
+					"name": "GET /suppliers (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -978,7 +978,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /suppliers/:id (Buscar por ID)",
+					"name": "GET /suppliers/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1000,7 +1000,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /suppliers/:id (Atualizar)",
+					"name": "PATCH /suppliers/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -1031,7 +1031,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /suppliers/:id (Deletar)",
+					"name": "DELETE /suppliers/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1055,7 +1055,7 @@
 			]
 		},
 		{
-			"name": "09. Avaliação (Review) - Fabrício",
+			"name": "09. Avaliação (Review ) - Fabrício",
 			"item": [
 				{
 					"name": "POST /reviews (Criar)",
@@ -1088,7 +1088,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /reviews (Listar Todos)",
+					"name": "GET /reviews (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1109,7 +1109,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /reviews/:id (Buscar por ID)",
+					"name": "GET /reviews/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1131,7 +1131,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /reviews/:id (Atualizar)",
+					"name": "PATCH /reviews/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -1162,7 +1162,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /reviews/:id (Deletar)",
+					"name": "DELETE /reviews/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1186,7 +1186,7 @@
 			]
 		},
 		{
-			"name": "10. Cupom (Coupon) - Você",
+			"name": "10. Cupom (Coupon ) - Você",
 			"item": [
 				{
 					"name": "POST /coupons (Criar)",
@@ -1219,7 +1219,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /coupons (Listar Todos)",
+					"name": "GET /coupons (Listar Todos )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1240,7 +1240,7 @@
 					"response": []
 				},
 				{
-					"name": "GET /coupons/:id (Buscar por ID)",
+					"name": "GET /coupons/:id (Buscar por ID )",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1262,7 +1262,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /coupons/:id (Atualizar)",
+					"name": "PATCH /coupons/:id (Atualizar )",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -1293,7 +1293,7 @@
 					"response": []
 				},
 				{
-					"name": "DELETE /coupons/:id (Deletar)",
+					"name": "DELETE /coupons/:id (Deletar )",
 					"request": {
 						"method": "DELETE",
 						"header": [],

@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.send('API de E-commerce Rodando...');
 });
 
-// Rotas (Serão adicionadas na Seção 3)
+// Rotas
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/v1/users', userRoutes);
 
@@ -50,7 +50,29 @@ app.use('/api/v1/order-items', orderItemRoutes);
 const orderRoutes = require('./routes/orderRoutes'); 
 app.use('/api/v1/orders', orderRoutes);
 
-// app.use('/api/users', require('./routes/userRoutes'));
+// ----------------------------------------------------------------
+// MIDDLEWARE DE TRATAMENTO DE ERROS (DEVE SER O ÚLTIMO)
+// ----------------------------------------------------------------
+
+// 1. Middleware para lidar com rotas não encontradas (404)
+app.all('*', (req, res, next) => {
+  const err = new Error(`Não foi possível encontrar ${req.originalUrl} neste servidor!`);
+  err.statusCode = 404;
+  next(err);
+});
+
+// 2. Middleware de tratamento de erros global
+app.use((err, req, res, next) => {
+  err.statusCode = err.statusCode || 500;
+  err.status = err.status || 'error';
+
+  res.status(err.statusCode).json({
+    status: err.status,
+    message: err.message,
+  });
+});
+
+// ----------------------------------------------------------------
 
 const PORT = process.env.PORT || 5000;
 
